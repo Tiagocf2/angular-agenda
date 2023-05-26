@@ -1,10 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  // { path: '', redirectTo: '/home', pathMatch: 'full' },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./home/home.module').then((module) => module.HomeModule),
+  },
+  {
+    path: 'auth',
+    loadChildren: () =>
+      import('./auth/feature/auth-shell/auth-shell.module').then(
+        (m) => m.AuthShellModule
+      ),
+  },
 ];
 
 @NgModule({
