@@ -22,7 +22,7 @@ export class LoginComponent {
 
   handleSubmit() {
     if (!this.formulario.valid) return;
-    this.router.navigate(['dashboard']);
+    this.router.navigate(['home']);
   }
 
   passwordVisible: boolean = false;
