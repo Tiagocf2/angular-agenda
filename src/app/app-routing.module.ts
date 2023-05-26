@@ -15,6 +15,7 @@ const routes: Routes = [
         (m) => m.AuthShellModule
       ),
   },
+  { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', redirectTo: '/not-found' },
 ];
