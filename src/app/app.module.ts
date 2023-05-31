@@ -9,14 +9,21 @@ import { HomeModule } from './home/home.module';
 import { SignupComponent } from './auth/feature/signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './shared/ui/not-found/not-found.component';
+import { StoreModuleWithConfig } from './core/data-access/store';
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, HomeComponent, NotFoundComponent],
+  declarations: [
+    AppComponent,
+    SignupComponent,
+    HomeComponent,
+    NotFoundComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HomeModule,
+    StoreModuleWithConfig,
   ],
   providers: [],
   bootstrap: [AppComponent],
