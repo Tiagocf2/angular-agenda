@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 export class ApiServiceConfig {
   baseUrl: string;
@@ -18,12 +19,23 @@ export class ApiService {
     this.baseUrl = config.baseUrl;
   }
 
-  get(url: string, params: Record<string, string>, options: object = {}) {
-    this.http.get(url, {
+  get<T>(
+    url: string,
+    params: Record<string, string>,
+    options: object = {}
+  ): Observable<T> {
+    return this.http.get<T>(url, {
       ...options,
       params: this.decodeParams(params),
     });
   }
+
+  post<T>(url: string, body: any, options: object = {}): Observable<T> {
+    return this.http.post<T>(url, body, {
+      ...options,
+    });
+  }
+
   private decodeParams(params: any) {
     return new HttpParams({
       fromString: new URLSearchParams(params).toString(),
