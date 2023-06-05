@@ -19,12 +19,10 @@ import { ApiServiceConfig } from './core/data-access/api/api.service';
     BrowserAnimationsModule,
     StoreModuleWithConfig,
     SessionModule,
-    ApiModule.forRoot(
-      new ApiServiceConfig({
-        baseUrl: environment.API_URL,
-        baseHeaders: { 'Content-Type': 'application/javascript' },
-      })
-    ),
+    ApiModule.forRoot({
+      baseUrl: environment.API_URL,
+      baseHeaders: { 'Content-Type': 'application/javascript' },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

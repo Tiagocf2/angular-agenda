@@ -8,22 +8,12 @@ export interface RequestOptions {
   [key: string]: any;
 }
 
-export class ApiServiceConfig {
-  baseUrl: string;
+export interface ApiServiceConfig {
+  baseUrl: string | '';
 
   baseHeaders:
     | Record<string, string | number | (string | number)[]>
     | undefined;
-
-  constructor(
-    options: {
-      baseUrl?: string;
-      baseHeaders?: Record<string, string | number | (string | number)[]>;
-    } = {}
-  ) {
-    this.baseUrl = options.baseUrl || '';
-    this.baseHeaders = options.baseHeaders;
-  }
 }
 
 @Injectable({ providedIn: 'root' })
@@ -37,7 +27,7 @@ export class ApiService {
   }
 
   constructor(
-    @Inject('config') private config: ApiServiceConfig,
+    @Inject('ApiConfig') private config: ApiServiceConfig,
     private http: HttpClient,
     private sessionService: SessionService
   ) {
@@ -46,7 +36,7 @@ export class ApiService {
 
   get<T>(
     url: string,
-    params: Record<string, string>,
+    params?: Record<string, string>,
     options: RequestOptions = {}
   ): Observable<T> {
     return this.http.get<T>(this.url + url, {
