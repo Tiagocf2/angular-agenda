@@ -1,11 +1,15 @@
 import { createAction, props } from '@ngrx/store';
 
 interface AuthUserProps {
-  token: string;
+  access_token: string;
   id: string;
 }
-export const signIn = createAction('Auth | SignIn', props<AuthUserProps>());
+const signIn = createAction('Auth | SignIn', props<AuthUserProps>());
 
-export const signUp = createAction('Auth | SignUn', props<AuthUserProps>());
+const signUp = createAction('Auth | SignUn', props<AuthUserProps>());
 
-export const signOff = createAction('Auth | SignOff');
+const signOff = createAction('Auth | SignOff');
+
+const AuthActions = { signIn, signUp, signOff };
+
+export default AuthActions;

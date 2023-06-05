@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import * as actions from '../actions/auth.actions';
+import actions from '../actions/auth.actions';
 
 export interface AuthState {
   id: string | null | undefined;
@@ -19,6 +19,6 @@ export const AuthReducer = createReducer(
     ...state,
     isAuth: true,
     id: props.id,
-    token: props.token,
+    token: props.access_token,
   }))
 );
