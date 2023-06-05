@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import * as actions from '../actions/auth.actions';
 
-interface AuthState {
+export interface AuthState {
   id: string | null | undefined;
   token: string | null | undefined;
   isAuth: boolean;
@@ -13,7 +13,7 @@ const initialState: AuthState = {
   isAuth: false,
 };
 
-const authReducer = createReducer(
+export const AuthReducer = createReducer(
   initialState,
   on(actions.signIn, (state, props) => ({
     ...state,
@@ -22,5 +22,3 @@ const authReducer = createReducer(
     token: props.token,
   }))
 );
-
-export default authReducer;

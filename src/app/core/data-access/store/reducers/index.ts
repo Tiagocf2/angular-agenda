@@ -1,5 +1,9 @@
-import authReducer from './auth.reducer';
+import { AuthReducer, AuthState } from './auth.reducer';
 
-export default {
-  auth: authReducer,
+export interface AppState {
+  auth: AuthState;
+}
+
+export const Reducers = {
+  auth: AuthReducer,
 };
