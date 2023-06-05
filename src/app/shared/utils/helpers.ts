@@ -4,6 +4,7 @@ import {
   APP_TITLE,
   APP_TITLE_SEPARATOR,
 } from './constants';
+import { ICep } from '../data-access/cep/cep.interface';
 
 export abstract class TitleHelper {
   static title = APP_TITLE;
@@ -22,4 +23,19 @@ export const errorParser = (error: any) => {
       `${error.statusText} (${error.status}): ${APP_DEFAULT_ERROR_MESSAGE}`
     );
   }
+};
+
+export const formatCepToAdress = (cep: ICep): string => {
+  let address = cep.logradouro;
+  if (cep.complemento) address += `, ${cep.complemento}`;
+  let local = cep.bairro;
+  if (local) {
+    local += `, ${cep.localidade}`;
+  } else {
+    local = cep.localidade;
+  }
+  if (local) address += ` - ${local}`;
+
+  if (cep.uf) address += ` - ${cep.uf}`;
+  return address;
 };

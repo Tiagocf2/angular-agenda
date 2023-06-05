@@ -1,1 +1,65 @@
-<p>signup works!</p>
+<mat-card-header>
+  <mat-card-title class="auth-card-title">Cadastro</mat-card-title>
+  <mat-card-subtitle
+    >Preencha os campos abaixo para continuar</mat-card-subtitle
+  >
+</mat-card-header>
+<mat-card-content>
+  <form [formGroup]="formulario" (ngSubmit)="handleSubmit()" class="auth-form">
+    <div class="auth-form-group">
+      <mat-form-field>
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="firstname" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Sobrenome</mat-label>
+        <input matInput formControlName="lastname" />
+      </mat-form-field>
+    </div>
+
+    <mat-form-field>
+      <mat-label>E-mail</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+
+    <div class="auth-form-group">
+      <mat-form-field hideRequiredMarker="true">
+        <mat-label>Endereço</mat-label>
+        <input matInput formControlName="address" />
+      </mat-form-field>
+      <mat-form-field hideRequiredMarker="true" class="cep-field">
+        <mat-label>CEP</mat-label>
+        <input matInput formControlName="cep" maxlength="8" />
+      </mat-form-field>
+      <button
+        mat-icon-button
+        matPrefix
+        aria-label="Procurar Cep"
+        type="button"
+        (click)="searchCep()"
+        [disabled]="fetchingCep || !cepValid"
+      >
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+
+    <mat-form-field>
+      <mat-label>Nome de usuário</mat-label>
+      <input matInput formControlName="username" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Senha</mat-label>
+      <input matInput formControlName="password" type="password" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Repetir a senha</mat-label>
+      <input matInput formControlName="repeat_password" type="password" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="loading">
+      Finalizar
+    </button>
+    <a mat-flat-button routerLink="/auth/login">Já tenho uma conta</a>
+  </form>
+</mat-card-content>

@@ -10,14 +10,18 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
+
 import { SignupRoutingModule } from './signup-routing.module';
+import { SignupComponent } from './signup.component';
+import { CepModule } from 'src/app/shared/data-access/cep/cep.module';
 
 @NgModule({
-  declarations: [],
+  declarations: [SignupComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     SignupRoutingModule,
+    CepModule,
     //
     MatCardModule,
     MatFormFieldModule,
@@ -29,7 +33,7 @@ import { SignupRoutingModule } from './signup-routing.module';
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: { appearance: 'outline', hideRequiredMarker: true },
+      useValue: { appearance: 'outline' },
     },
   ],
 })
