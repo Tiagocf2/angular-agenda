@@ -21,7 +21,7 @@ import { ApiServiceConfig } from './core/data-access/api/api.service';
     SessionModule,
     ApiModule.forRoot({
       baseUrl: environment.API_URL,
-      baseHeaders: { 'Content-Type': 'application/javascript' },
+      baseHeaders: { 'Content-Type': 'application/json' },
     }),
   ],
   providers: [],
