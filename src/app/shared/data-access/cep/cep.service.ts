@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ICep } from './cep.interface';
-import { Observable, delay, map, take } from 'rxjs';
+import { Observable, delay, map, take, Subject } from 'rxjs';
 
 @Injectable()
 export class CepService {
@@ -17,9 +17,12 @@ export class CepService {
   }
 
   search(cep: string): Observable<ICep> {
-    if (!this.validate(cep)) throw new Error('Invalid CEP provided');
+    if (!this.validate(cep)) {
+      const subject = new Subject<ICep>();
+      subject.error(new Error('Invalid CEP provided'));
+      return subject.asObservable();
+    }
     return this.http.get<any>(this.formatUrl(cep)).pipe(
-      delay(3000),
       take(1),
       map((value) => {
         if (value?.erro) throw new Error('Invalid CEP provided');
