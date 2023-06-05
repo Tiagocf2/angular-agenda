@@ -1,8 +1,11 @@
 .auth-layout {
   background-color: #0a0a15;
-  display: grid;
-  place-items: center;
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  min-height: calc(100% - 50px);
+  padding-top: 50px;
 }
 
 .content-card {
