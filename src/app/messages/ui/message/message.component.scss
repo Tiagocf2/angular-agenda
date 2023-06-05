@@ -1,6 +1,8 @@
 .message {
   position: absolute;
   right: 0;
+  width: max-content;
+  max-width: 250px;
 
   translate: 0 calc(100% * var(--index) + 1rem * var(--index));
 

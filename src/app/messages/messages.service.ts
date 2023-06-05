@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject, Subject, Subscription } from 'rxjs';
 import { IMessageData } from './interfaces/message-data.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MessagesService {
-  private observable: BehaviorSubject<IMessageData>;
+  private observable: Subject<IMessageData>;
 
   constructor() {
-    this.observable = new BehaviorSubject<IMessageData>({ text: '' });
+    this.observable = new Subject<IMessageData>();
   }
 
   subscribe(fun: (value: IMessageData) => void): Subscription {

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { MessagesService } from './messages.service';
-import { MESSAGE_TIMEOUT } from './constants/messages.constants';
 import { IMessageData } from './interfaces/message-data.interface';
 import { Message } from './models/message.model';
 
@@ -32,7 +31,7 @@ export class MessagesComponent {
     if (!message) return;
     const msg = new Message(message);
     this._activeMessages[msg.id] = msg;
-    setTimeout(this.deactivateMessage.bind(this), MESSAGE_TIMEOUT, msg.id);
+    setTimeout(this.deactivateMessage.bind(this), msg.timeout, msg.id);
   }
 
   deactivateMessage(id: number) {

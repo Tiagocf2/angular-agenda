@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../data-access/auth.service';
 import { EMPTY, catchError, delay, take } from 'rxjs';
+import { MessagesService } from 'src/app/messages/messages.service';
+import { errorParser } from 'src/app/shared/utils/helpers';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,8 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private messagesService: MessagesService
   ) {}
 
   ngOnInit() {
@@ -46,6 +49,9 @@ export class LoginComponent {
         catchError((error) => {
           console.error(error);
           this.loading = false;
+          this.messagesService.showMessage({
+            text: errorParser(error),
+          });
           return EMPTY;
         })
       )

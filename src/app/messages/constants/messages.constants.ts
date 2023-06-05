@@ -1,2 +1,2 @@
 /** Message timeout in `miliseconds` */
-export const MESSAGE_TIMEOUT = 6 * 1000;
+export const MESSAGE_DEFAULT_TIMEOUT = 6 * 1000;
