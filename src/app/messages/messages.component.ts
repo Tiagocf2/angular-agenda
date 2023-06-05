@@ -38,11 +38,9 @@ export class MessagesComponent {
     let message = this._activeMessages[id];
     if (!message) return;
     message.exit();
-    console.log('deactivated');
   }
 
   removeMessage(msg: Message) {
-    console.log('💀');
     delete this._activeMessages[msg.id];
   }
 }
