@@ -9,9 +9,12 @@
   display: flex;
   align-items: center;
   padding: 2rem;
+  padding-right: 2.5rem;
   font-size: 18px;
-  background-color: lightyellow;
-  box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  background-color: #46405caa;
+  color: white;
+  box-shadow: 0 2px 5px -1px #000c, 0 0 2px 1px #000b;
   transition: translate 150ms ease;
   animation: enter 300ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
 
@@ -29,8 +32,9 @@
     font-size: 0.75rem;
     font-weight: bold;
     line-height: 1em;
-    color: black;
+    color: white;
     opacity: 0.5;
+    cursor: pointer;
 
     background-color: transparent;
     border: none;
