@@ -9,7 +9,7 @@ import { SessionModule } from './core/data-access/session/session.module';
 
 import { StoreModuleWithConfig } from './core/data-access/store';
 import { environment } from 'src/environments/environment';
-import { ApiServiceConfig } from './core/data-access/api/api.service';
+import { MessagesModule } from './messages/messages.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +23,7 @@ import { ApiServiceConfig } from './core/data-access/api/api.service';
       baseUrl: environment.API_URL,
       baseHeaders: { 'Content-Type': 'application/json' },
     }),
+    MessagesModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,0 +1,8 @@
+<div class="message-container">
+  <app-message
+    *ngFor="let message of messages; index as i"
+    [message]="message"
+    [onExit]="removeMessage.bind(this)"
+    [index]="i"
+  />
+</div>

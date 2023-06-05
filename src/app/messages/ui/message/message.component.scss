@@ -1,0 +1,61 @@
+.message {
+  position: absolute;
+  right: 0;
+
+  translate: 0 calc(100% * var(--index) + 1rem * var(--index));
+
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  font-size: 18px;
+  background-color: lightyellow;
+  box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.4);
+  transition: translate 150ms ease;
+  animation: enter 300ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
+
+  &.exit {
+    animation: exit 300ms cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+  }
+
+  button.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.875em;
+    margin: 0;
+
+    font-size: 0.75rem;
+    font-weight: bold;
+    line-height: 1em;
+    color: black;
+    opacity: 0.5;
+
+    background-color: transparent;
+    border: none;
+
+    transition: opacity 80ms ease;
+    &:hover,
+    &:active,
+    &:focus {
+      opacity: 0.8;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+    }
+  }
+}
+
+@keyframes enter {
+  from {
+    transform: translateX(calc(2rem + 100%));
+  }
+}
+
+@keyframes exit {
+  to {
+    transform: translateX(calc(2rem + 100%));
+  }
+}

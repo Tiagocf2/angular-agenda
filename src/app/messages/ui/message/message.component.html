@@ -1,0 +1,9 @@
+<div
+  #ref
+  class="message"
+  [class.exit]="message.status === 'exiting'"
+  [style.--index]="index"
+>
+  <span>{{ message.message }}</span>
+  <button class="close" (click)="close()">✕</button>
+</div>
