@@ -3,27 +3,28 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ApiModule } from './core/data-access/api/api.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SessionModule } from './core/data-access/session/session.module';
 
-import { HomeModule } from './home/home.module';
-import { SignupComponent } from './auth/feature/signup/signup.component';
-import { HomeComponent } from './home/home.component';
-import { NotFoundComponent } from './shared/ui/not-found/not-found.component';
 import { StoreModuleWithConfig } from './core/data-access/store';
+import { environment } from 'src/environments/environment';
+import { ApiServiceConfig } from './core/data-access/api/api.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SignupComponent,
-    HomeComponent,
-    NotFoundComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HomeModule,
     StoreModuleWithConfig,
+    SessionModule,
+    ApiModule.forRoot(
+      new ApiServiceConfig({
+        baseUrl: environment.API_URL,
+        baseHeaders: { 'Content-Type': 'application/javascript' },
+      })
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent],
