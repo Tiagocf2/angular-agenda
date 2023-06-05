@@ -6,13 +6,13 @@
   <form [formGroup]="formulario" (ngSubmit)="handleSubmit()" class="auth-form">
     <mat-form-field>
       <mat-label>Usuário</mat-label>
-      <input matInput formControlName="login" />
+      <input matInput formControlName="username" />
     </mat-form-field>
     <mat-form-field>
       <mat-label>Senha</mat-label>
       <input
         matInput
-        formControlName="senha"
+        formControlName="password"
         [type]="passwordVisible ? 'text' : 'password'"
       />
       <button
@@ -27,7 +27,9 @@
       </button>
     </mat-form-field>
     <mat-checkbox formControlName="rememberMe">Lembrar de mim</mat-checkbox>
-    <button mat-raised-button color="primary">Continuar</button>
+    <button mat-raised-button color="primary" [disabled]="loading">
+      Continuar
+    </button>
     <a mat-flat-button routerLink="/auth/cadastro">Cadastre-se</a>
   </form>
 </mat-card-content>
