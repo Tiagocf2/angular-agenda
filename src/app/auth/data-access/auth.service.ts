@@ -8,6 +8,7 @@ import SessionType from 'src/app/core/data-access/session/session-type.enum';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/core/data-access/store/reducers';
 import AuthActions from 'src/app/core/data-access/store/actions/auth.actions';
+import { SignUpRequest } from '../interfaces/signup-request.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -32,5 +33,9 @@ export class AuthService {
       }),
       map(() => true)
     );
+  }
+
+  signup(signupRequest: SignUpRequest): Observable<void> {
+    return this.api.post<void>('/auth/signup', signupRequest);
   }
 }
