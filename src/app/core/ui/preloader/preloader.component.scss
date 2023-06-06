@@ -1,0 +1,69 @@
+@import "src/app/shared/styles/variables.scss";
+
+.loader-wrapper {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: inline-grid;
+  place-items: center;
+  z-index: 10000;
+  isolation: isolate;
+}
+
+.loader-backdrop {
+  display: block;
+  position: absolute;
+  inset: 0;
+  background-color: $background-color;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.loader-title {
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.loader-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  width: 90vw;
+  max-width: 800px;
+  min-width: 150px;
+  height: fit-content;
+  z-index: 1;
+
+  mat-progress-bar {
+    --height: 40px;
+    --mdc-linear-progress-active-indicator-color: white;
+    --mdc-linear-progress-active-indicator-height: var(--height);
+    --mdc-linear-progress-track-height: var(--height);
+    border: 4px solid white;
+    border-radius: 5px;
+  }
+
+  .loader-label {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    transition: color 1s ease;
+
+    &--invert {
+      color: rgb(23 27 61);
+    }
+  }
+}

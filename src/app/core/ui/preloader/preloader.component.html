@@ -1,0 +1,16 @@
+<div class="loader-wrapper">
+  <div class="loader-backdrop"></div>
+  <div class="content-wrapper">
+    <h1 class="loader-title">Now Loading...</h1>
+    <div class="loader-container">
+      <mat-progress-bar
+        class="loader"
+        mode="determinate"
+        [value]="progress"
+      ></mat-progress-bar>
+      <span class="loader-label" [class.loader-label--invert]="progress > 50"
+        >{{ progress }}%</span
+      >
+    </div>
+  </div>
+</div>
