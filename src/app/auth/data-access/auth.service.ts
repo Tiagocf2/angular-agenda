@@ -56,8 +56,11 @@ export class AuthService {
       .get<UserData>(`/users/${session.id}`, undefined, { auth: true })
       .pipe(
         take(1),
-        tap((userData) => {
-          this.store.dispatch(UserActions.read(userData));
+        tap((data: any) => {
+          data.id = data._id;
+          delete data._id;
+
+          this.store.dispatch(UserActions.read(<UserData>data));
         }),
         map(() => {})
       );

@@ -9,6 +9,14 @@ const routes: Routes = [
       import('../homepage/homepage.module').then((m) => m.HomePageModule),
     title: TitleHelper.format('Home'),
   },
+  {
+    path: 'perfil',
+    loadChildren: () =>
+      import('../profile-page/profile-page.module').then(
+        (m) => m.ProfilePageModule
+      ),
+    title: TitleHelper.format('Perfil'),
+  },
 ];
 
 @NgModule({

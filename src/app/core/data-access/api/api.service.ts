@@ -53,6 +53,13 @@ export class ApiService {
     });
   }
 
+  put<T>(url: string, body: any, options: RequestOptions = {}): Observable<T> {
+    return this.http.put<T>(this.url + url, body, {
+      ...options,
+      headers: this.buildHeaders(options),
+    });
+  }
+
   private buildHeaders(options?: RequestOptions): Record<string, any> {
     if (!options) return new HttpHeaders(this.headers);
     const headers: Record<string, any> = {};

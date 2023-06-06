@@ -23,6 +23,10 @@ export class MessageComponent implements AfterViewInit {
     return this._message!;
   }
 
+  get messageClass(): string {
+    return `message message--${this.message.type.toLowerCase()}`;
+  }
+
   ngAfterViewInit(): void {
     if (!this.onExit) return;
     this.ref.nativeElement.addEventListener(

@@ -1,13 +1,21 @@
 <mat-card class="center-x">
-  <div class="perfil-wrapper" *ngIf="user$ | async as user">
-    <img class="avatar" ngxGravatar [email]="user.email" [size]="100" />
+  <div class="perfil-wrapper" *ngIf="user$ | async as user; else empty">
+    <img
+      *ngIf="!!user.email"
+      class="avatar"
+      ngxGravatar
+      [email]="user.email"
+      [size]="100"
+    />
     <div class="perfil-info">
       <span>{{ user.name }}</span>
       <span class="username">{{ user.username }}</span>
       <span>{{ user.email }}</span>
     </div>
-    <button mat-flat-button color="primary">
+    <button mat-flat-button color="primary" (click)="navigate()">
       editar<mat-icon>edit</mat-icon>
     </button>
   </div>
 </mat-card>
+
+<ng-template #empty></ng-template>

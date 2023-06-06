@@ -1,4 +1,5 @@
 @import "src/app/shared/styles/variables.scss";
+@import "../../styles/home.variables.scss";
 
 :host {
   height: 100%;
@@ -15,17 +16,23 @@
   padding: 25px;
 }
 
+.home-title {
+  font-size: 2rem;
+  margin-bottom: 1.75rem;
+  color: $light-color;
+}
+
 .main-card {
   max-width: 100%;
   width: 100%;
   flex: 1;
-  background-color: #ccd;
+  background-color: $light-color;
   padding: 1.5rem;
 }
 
 footer {
   margin-top: 25px;
-  color: #ccd;
+  color: $light-color;
 }
 
 @media (min-width: $screen-md) {

@@ -1,6 +1,14 @@
 <main class="home-layout">
+  <h1 class="home-title">Angular Agenda</h1>
   <mat-card class="main-card">
-    <router-outlet></router-outlet>
+    <mat-grid-list cols="12" rowHeight="3:4" gutterSize="0.75rem">
+      <mat-grid-tile colspan="8">
+        <app-action-bar></app-action-bar>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="4" rowspan="3">
+        <app-profile></app-profile>
+      </mat-grid-tile>
+    </mat-grid-list>
   </mat-card>
   <footer>2023 © Tiago C Frausino</footer>
 </main>
