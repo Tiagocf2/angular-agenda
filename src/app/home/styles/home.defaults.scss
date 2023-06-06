@@ -1,0 +1,24 @@
+@import "./home.variables.scss";
+
+:host {
+  display: flex;
+  flex: 1;
+  height: 100%;
+}
+
+:host > mat-card {
+  display: flex;
+  flex: 1;
+  padding: $home-spacing;
+  font-size: 16px;
+
+  &.center-x,
+  &.center {
+    text-align: center;
+    align-items: center;
+  }
+  &.center-y,
+  &.center {
+    justify-content: center;
+  }
+}
