@@ -1,0 +1,19 @@
+<div class="chat-wrapper">
+  <div class="input-wrapper">
+    <textarea
+      class="message-input"
+      placeholder="Com o que você gostaria de ajuda?"
+      value="Sushi"
+      rows="2"
+      (input)="count($event)"
+      [maxLength]="maxlength"
+    ></textarea>
+    <div class="char-count">
+      <span>{{ chars }}</span
+      >/<span>{{ maxlength }}</span>
+    </div>
+  </div>
+  <button mat-icon-button>
+    <mat-icon color="primary">send</mat-icon>
+  </button>
+</div>
