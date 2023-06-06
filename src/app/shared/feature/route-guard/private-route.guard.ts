@@ -10,7 +10,7 @@ import { Observable, map } from 'rxjs';
 import { AppState } from 'src/app/core/data-access/store/reducers';
 
 @Injectable()
-class PrivateRouteGuard implements CanActivate {
+export class PrivateRouteGuard implements CanActivate {
   constructor(private store: Store<AppState>, private router: Router) {}
 
   canActivate(
