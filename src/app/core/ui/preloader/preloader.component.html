@@ -2,7 +2,7 @@
   *ngIf="render"
   class="loader-wrapper"
   [class.hide]="hide"
-  (transitionend)="handleOnTransitionEnd()"
+  (animationend)="handleOnAnimationEnd()"
 >
   <div class="loader-backdrop"></div>
   <div class="content-wrapper">

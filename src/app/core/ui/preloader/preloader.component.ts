@@ -21,7 +21,7 @@ export class PreloaderComponent {
     clearInterval(this.intervalId);
   }
 
-  handleOnTransitionEnd() {
+  handleOnAnimationEnd() {
     if (this.onAnimationEnd) this.onAnimationEnd();
     if (this.autoDispose) this.render = false;
     clearInterval(this.intervalId);

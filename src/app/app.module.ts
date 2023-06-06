@@ -1,18 +1,26 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
+import { AppComponent } from './app.component';
+import { SessionManagerComponent } from './core/feature/session-manager/session-manager.component';
+import { PreloaderComponent } from './core/ui/preloader/preloader.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { ApiModule } from './core/data-access/api/api.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SessionModule } from './core/data-access/session/session.module';
-
-import { StoreModuleWithConfig } from './core/data-access/store';
-import { environment } from 'src/environments/environment';
 import { MessagesModule } from './messages/messages.module';
+import { StoreModuleWithConfig } from './core/data-access/store';
+
+import { PrivateRouteGuard } from './shared/feature/route-guard/private-route.guard';
+import { PublicRouteGuard } from './shared/feature/route-guard/public-route.guard';
+
+import { environment } from 'src/environments/environment';
+import { SessionManagerGuard } from './core/feature/session-manager/session-manager.guard';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SessionManagerComponent, PreloaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,8 +32,9 @@ import { MessagesModule } from './messages/messages.module';
       baseHeaders: { 'Content-Type': 'application/json' },
     }),
     MessagesModule.forRoot(),
+    MatProgressBarModule,
   ],
-  providers: [],
+  providers: [PrivateRouteGuard, PublicRouteGuard, SessionManagerGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

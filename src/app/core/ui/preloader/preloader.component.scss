@@ -1,4 +1,5 @@
 @import "src/app/shared/styles/variables.scss";
+@import "src/app/shared/styles/animations.scss";
 
 .loader-wrapper {
   position: fixed;
@@ -10,11 +11,9 @@
   z-index: 10000;
   isolation: isolate;
 
-  opacity: 1;
-  transition: opacity 800ms ease-in-out;
   &.hide {
+    animation: hide 800ms ease-in-out;
     pointer-events: none;
-    opacity: 0;
   }
 }
 

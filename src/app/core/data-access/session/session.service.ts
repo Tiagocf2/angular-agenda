@@ -18,7 +18,8 @@ export class SessionService {
   }
 
   destroy() {
-    this.storage.removeItem(SESSION_KEY);
+    localStorage.removeItem(SESSION_KEY);
+    sessionStorage.removeItem(SESSION_KEY);
   }
 
   retrieve(): SessionData {
