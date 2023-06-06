@@ -5,6 +5,7 @@ import { AuthService } from '../../data-access/auth.service';
 import { EMPTY, catchError, delay, take } from 'rxjs';
 import { MessagesService } from 'src/app/messages/messages.service';
 import { errorParser } from 'src/app/shared/utils/helpers';
+import { MessageType } from 'src/app/messages/enums/message-type.enum';
 
 @Component({
   selector: 'app-login',
@@ -51,6 +52,7 @@ export class LoginComponent {
           this.loading = false;
           this.messagesService.showMessage({
             text: errorParser(error),
+            type: MessageType.ERROR,
           });
           return EMPTY;
         })

@@ -41,7 +41,7 @@ export class AuthService {
           keepSession === true ? SessionType.LOCAL : SessionType.SESSION;
         this.sessionService.create(response, sessionType);
         this.store.dispatch(AuthActions.signIn(response));
-        this.getUserData(<SessionData>response);
+        this.getUserData(<SessionData>response).subscribe(console.log);
       }),
       map(() => true)
     );
@@ -49,6 +49,11 @@ export class AuthService {
 
   signup(signupRequest: SignUpRequest): Observable<void> {
     return this.api.post<void>('/auth/signup', signupRequest);
+  }
+
+  logout(): void {
+    this.store.dispatch(AuthActions.signOff());
+    this.sessionService.destroy();
   }
 
   getUserData(session: SessionData): Observable<void> {

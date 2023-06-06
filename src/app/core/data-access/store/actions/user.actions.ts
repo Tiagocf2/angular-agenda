@@ -10,7 +10,8 @@ export interface UpdateUserAction {
 
 const read = createAction('User | Read', props<UserData>());
 const update = createAction('User | Update', props<UserData>());
+const clear = createAction('User | Clear');
 
-const UserActions = { read, update };
+const UserActions = { read, update, clear };
 
 export default UserActions;

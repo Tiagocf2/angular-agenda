@@ -23,5 +23,6 @@ export const UserReducer = createReducer(
   on(actions.update, (state, props) => ({
     ...state,
     ...structuredClone(props),
-  }))
+  })),
+  on(actions.clear, () => structuredClone(initialState))
 );

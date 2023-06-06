@@ -21,6 +21,12 @@ export const AuthReducer = createReducer(
     id: props.id,
     token: props.access_token,
   })),
+  on(actions.signOff, (state, props) => ({
+    ...state,
+    isAuth: initialState.isAuth,
+    id: initialState.id,
+    token: initialState.token,
+  })),
   on(actions.initialize, (state, props) => ({
     ...state,
     isAuth: !!props.auth,
