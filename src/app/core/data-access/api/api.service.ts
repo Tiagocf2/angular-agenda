@@ -36,7 +36,7 @@ export class ApiService {
 
   get<T>(
     url: string,
-    params?: Record<string, string>,
+    params?: any,
     options: RequestOptions = {}
   ): Observable<T> {
     return this.http.get<T>(this.url + url, {

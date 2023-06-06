@@ -1,5 +1,10 @@
 <mat-card class="center-x row card">
-  <button mat-fab color="primary" aria-label="Adicionar nova tarefa">
+  <button
+    mat-fab
+    color="primary"
+    aria-label="Adicionar nova tarefa"
+    (click)="newTask()"
+  >
     <mat-icon>add</mat-icon>
   </button>
   <app-chat></app-chat>

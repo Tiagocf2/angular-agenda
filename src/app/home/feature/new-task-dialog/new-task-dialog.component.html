@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Nova Tarefa</h1>
+<div mat-dialog-content>
+  <form [formGroup]="formulario" (ngSubmit)="handleSubmit()" class="form">
+    <mat-form-field>
+      <mat-label>Titulo</mat-label>
+      <input matInput formControlName="title" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Descrição</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Tags</mat-label>
+      <input matInput formControlName="tags" />
+    </mat-form-field>
+    <label id="priority-radio-group">Prioridade*</label>
+    <mat-radio-group
+      aria-labelledby="priority-radio-group"
+      formControlName="priority"
+    >
+      <mat-radio-button value="1" name="priority"> Alta </mat-radio-button>
+      <mat-radio-button value="2" name="priority"> Média </mat-radio-button>
+      <mat-radio-button value="3" name="priority"> Baixa </mat-radio-button>
+    </mat-radio-group>
+    <div class="actions">
+      <button mat-button color="warn" type="button" (click)="close()">
+        Sair
+      </button>
+      <button mat-flat-button color="primary">Salvar</button>
+    </div>
+  </form>
+</div>
