@@ -40,11 +40,11 @@ export class NewTaskDialogComponent {
       description: [null],
       tags: [null],
       priority: [2, Validators.required],
+      dueDate: [new Date()],
     });
   }
 
   handleSubmit() {
-    console.log('lasdsa');
     if (!this.formulario.valid) return;
     const values = this.formulario.value;
     const payload = {
