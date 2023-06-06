@@ -1,4 +1,9 @@
-<div class="loader-wrapper">
+<div
+  *ngIf="render"
+  class="loader-wrapper"
+  [class.hide]="hide"
+  (transitionend)="handleOnTransitionEnd()"
+>
   <div class="loader-backdrop"></div>
   <div class="content-wrapper">
     <h1 class="loader-title">Now Loading...</h1>

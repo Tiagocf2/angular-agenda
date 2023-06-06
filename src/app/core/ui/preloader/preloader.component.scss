@@ -9,6 +9,13 @@
   place-items: center;
   z-index: 10000;
   isolation: isolate;
+
+  opacity: 1;
+  transition: opacity 800ms ease-in-out;
+  &.hide {
+    pointer-events: none;
+    opacity: 0;
+  }
 }
 
 .loader-backdrop {
