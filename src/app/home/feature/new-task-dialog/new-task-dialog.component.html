@@ -13,10 +13,6 @@
       <mat-label>Descrição</mat-label>
       <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
-    <mat-form-field>
-      <mat-label>Tags</mat-label>
-      <input matInput formControlName="tags" />
-    </mat-form-field>
     <label id="priority-radio-group">Prioridade*</label>
     <mat-radio-group
       aria-labelledby="priority-radio-group"
@@ -27,7 +23,7 @@
       <mat-radio-button [value]="3" name="priority"> Baixa </mat-radio-button>
     </mat-radio-group>
     <div class="actions">
-      <button mat-button color="warn" type="button" (click)="close()">
+      <button mat-button color="warn" type="button" (click)="close($event)">
         Sair
       </button>
       <button mat-flat-button color="primary">Salvar</button>

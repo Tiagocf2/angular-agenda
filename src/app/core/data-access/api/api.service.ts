@@ -60,6 +60,13 @@ export class ApiService {
     });
   }
 
+  delete<T>(url: string, options: RequestOptions = {}): Observable<T> {
+    return this.http.delete<T>(this.url + url, {
+      ...options,
+      headers: this.buildHeaders(options),
+    });
+  }
+
   private buildHeaders(options?: RequestOptions): Record<string, any> {
     if (!options) return new HttpHeaders(this.headers);
     const headers: Record<string, any> = {};

@@ -5,6 +5,14 @@
   height: 100%;
 }
 
+.allow-overflow {
+  overflow-y: auto;
+}
+
+mat-grid-tile {
+  width: 100%;
+}
+
 .home-layout {
   background-color: $background-color;
   display: flex;

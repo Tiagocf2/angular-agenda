@@ -34,10 +34,11 @@ export const TasksReducer = createReducer(
     const list = Array.from(state.list);
     for (let i = 0; i < list.length; i++) {
       if (list[i]._id === props._id) {
-        list.splice(i);
+        list.splice(i, 1);
         break;
       }
     }
+
     return { list };
   })
 );

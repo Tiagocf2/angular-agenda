@@ -2,11 +2,14 @@
   <h1 class="home-title">Angular Agenda</h1>
   <mat-card class="main-card">
     <mat-grid-list cols="12" rowHeight="3:4" gutterSize="0.75rem">
-      <mat-grid-tile colspan="8">
+      <mat-grid-tile colspan="8" rowspan="3">
         <app-action-bar></app-action-bar>
       </mat-grid-tile>
       <mat-grid-tile colspan="4" rowspan="3">
         <app-profile></app-profile>
+      </mat-grid-tile>
+      <mat-grid-tile colspan="8" rowspan="5" class="allow-overflow">
+        <app-task-list></app-task-list>
       </mat-grid-tile>
     </mat-grid-list>
   </mat-card>

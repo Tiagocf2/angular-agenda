@@ -10,6 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ChatModule } from '../../ui/chat/chat.module';
 import { AuthService } from 'src/app/auth/data-access/auth.service';
 import { TasksModule } from 'src/app/shared/data-access/tasks/tasks.module';
+import { ChatService } from '../../data-access/chat.service';
 
 @NgModule({
   declarations: [ActionBarComponent],
@@ -22,7 +23,7 @@ import { TasksModule } from 'src/app/shared/data-access/tasks/tasks.module';
     MatDialogModule,
     TasksModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, ChatService],
   exports: [ActionBarComponent],
 })
 export class ActionBarModule {}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -6,10 +6,15 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialogModule,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
+import { TaskData } from 'src/app/shared/data-access/tasks/tasks.interface';
 
 @Component({
   selector: 'app-new-task-dialog',
@@ -28,7 +33,8 @@ import { MatRadioModule } from '@angular/material/radio';
 export class NewTaskDialogComponent {
   constructor(
     private formBuilder: FormBuilder,
-    public dialogRef: MatDialogRef<NewTaskDialogComponent>
+    public dialogRef: MatDialogRef<NewTaskDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data?: TaskData
   ) {}
 
   formulario!: FormGroup;
@@ -36,11 +42,10 @@ export class NewTaskDialogComponent {
 
   ngOnInit() {
     this.formulario = this.formBuilder.group({
-      title: [null, [Validators.required, Validators.minLength(4)]],
-      description: [null],
-      tags: [null],
-      priority: [2, Validators.required],
-      dueDate: [new Date()],
+      title: [this.data?.title, [Validators.required, Validators.minLength(4)]],
+      description: [this.data?.description],
+      priority: [this.data?.priority || 2, Validators.required],
+      dueDate: [this.data?.dueDate || new Date()],
     });
   }
 
@@ -49,14 +54,12 @@ export class NewTaskDialogComponent {
     const values = this.formulario.value;
     const payload = {
       ...values,
-      tags: (<string>values.tags)?.replace(/[^0-9A-z\-_,]+/g, '').split(','),
     };
     this.dialogRef.close(payload);
   }
 
-  close() {
-    if (confirm('Realmente deseja sair?')) {
-      this.dialogRef.close();
-    }
+  close(event: any) {
+    event.preventDefault();
+    this.dialogRef.close();
   }
 }

@@ -1,3 +1,5 @@
+import { TaskStatus } from './task.enum';
+
 export interface TaskData {
   _id: string;
   title: string;
@@ -5,6 +7,7 @@ export interface TaskData {
   dueDate: Date;
   tags: Set<string>;
   priority: number;
+  status: TaskStatus;
 }
 
 export interface CreateTaskRequest {

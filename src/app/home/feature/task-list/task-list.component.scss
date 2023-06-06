@@ -1,0 +1,10 @@
+mat-card {
+  height: fit-content;
+  --mdc-elevated-card-container-color: #fff8;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

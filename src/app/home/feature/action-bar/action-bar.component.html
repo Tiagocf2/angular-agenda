@@ -1,11 +1,25 @@
 <mat-card class="center-x row card">
-  <button
-    mat-fab
-    color="primary"
-    aria-label="Adicionar nova tarefa"
-    (click)="newTask()"
-  >
-    <mat-icon>add</mat-icon>
-  </button>
-  <app-chat></app-chat>
+  <div class="content-wrapper">
+    <div class="content-group">
+      <button
+        mat-fab
+        color="primary"
+        aria-label="Adicionar nova tarefa"
+        (click)="newTask()"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+      <app-chat [onSubmit]="handleSubmit.bind(this)"></app-chat>
+    </div>
+    <div class="content-group">
+      <div class="response">
+        <div class="response-label">Resposta:</div>
+        <div class="response-text">
+          <span *ngIf="chatResponse">
+            {{ chatResponse?.text }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
 </mat-card>

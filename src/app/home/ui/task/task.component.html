@@ -1,0 +1,36 @@
+<mat-card>
+  <div class="task-container">
+    <div class="line">
+      <div class="block">
+        <mat-slide-toggle
+          (change)="handleChange($event)"
+          [checked]="isDone"
+        ></mat-slide-toggle>
+        <span>{{ task.title }}</span>
+      </div>
+      <div class="block">
+        <span>{{ formattedDate }}</span>
+      </div>
+    </div>
+    <div class="line">
+      <div class="text-block">
+        <span>{{ task.description }}</span>
+      </div>
+      <div class="block">
+        <span [class]="priorityBadge">{{ taskPriority }}</span>
+        <span [class]="statusBadge">{{ taskStatus }}</span>
+      </div>
+    </div>
+    <div class="line">
+      <div class="block"></div>
+      <div class="block">
+        <button mat-icon-button (click)="handleEdit()">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="handleRemove()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</mat-card>

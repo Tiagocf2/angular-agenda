@@ -1,0 +1,18 @@
+<mat-card>
+  <div class="list" *ngIf="tasks$ | async as tasks">
+    <ng-container *ngIf="tasks.length; else empty">
+      <div *ngFor="let task of tasks$ | async">
+        <app-task
+          [task]="task"
+          [onChange]="handleChange.bind(this)"
+          [onStatusChange]="handleStatusChange.bind(this)"
+          [onRemove]="handleRemove.bind(this)"
+        ></app-task>
+      </div>
+    </ng-container>
+  </div>
+</mat-card>
+
+<ng-template #empty>
+  <span>Nenhuma tarefa</span>
+</ng-template>

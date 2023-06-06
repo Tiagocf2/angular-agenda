@@ -1,6 +1,7 @@
 <div class="chat-wrapper">
   <div class="input-wrapper">
     <textarea
+      #ref
       class="message-input"
       placeholder="Com o que você gostaria de ajuda?"
       value="Sushi"
@@ -13,7 +14,7 @@
       >/<span>{{ maxlength }}</span>
     </div>
   </div>
-  <button mat-icon-button>
+  <button mat-icon-button (click)="handleSubmit(ref)">
     <mat-icon color="primary">send</mat-icon>
   </button>
 </div>

@@ -24,7 +24,11 @@ export class TasksService {
 
   create(userId: string, payload: CreateTaskRequest): Observable<void> {
     return this.api
-      .post<TaskData>(`/users/${userId}/tasks`, payload, { auth: true })
+      .post<TaskData>(
+        `/users/${userId}/tasks`,
+        { ...payload, user: userId },
+        { auth: true }
+      )
       .pipe(
         take(1),
         catchError((error) => {
@@ -45,8 +49,9 @@ export class TasksService {
       );
   }
 
-  update(userId: string, payload: UpdateTaskRequest) {
-    this.api
+  update(userId: string, payload: UpdateTaskRequest): Observable<void> {
+    console.log(payload);
+    return this.api
       .put<TaskData>(`/users/${userId}/tasks/${payload._id}`, payload, {
         auth: true,
       })
@@ -77,9 +82,9 @@ export class TasksService {
       );
   }
 
-  remove(userId: string, taskId: string) {
-    this.api
-      .get<TaskData[]>(`/users/${userId}/tasks/${taskId}`, {
+  remove(userId: string, taskId: string): Observable<void> {
+    return this.api
+      .delete<TaskData[]>(`/users/${userId}/tasks/${taskId}`, {
         auth: true,
       })
       .pipe(
