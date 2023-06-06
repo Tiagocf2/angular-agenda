@@ -53,6 +53,7 @@ export class AuthService {
 
   logout(): void {
     this.store.dispatch(AuthActions.signOff());
+    this.store.dispatch(UserActions.clear());
     this.sessionService.destroy();
   }
 
