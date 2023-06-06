@@ -8,7 +8,7 @@ import {
   TaskData,
   UpdateTaskRequest,
 } from './tasks.interface';
-import { EMPTY, catchError, map, take, tap } from 'rxjs';
+import { EMPTY, Observable, catchError, map, take, tap } from 'rxjs';
 import TasksActions from 'src/app/core/data-access/store/actions/tasks.actions';
 import { MessagesService } from 'src/app/messages/messages.service';
 import { MessageType } from 'src/app/messages/enums/message-type.enum';
@@ -22,9 +22,9 @@ export class TasksService {
     private message: MessagesService
   ) {}
 
-  create(userId: string, payload: CreateTaskRequest) {
-    this.api
-      .post<TaskData>(`users/${userId}/tasks`, payload, { auth: true })
+  create(userId: string, payload: CreateTaskRequest): Observable<void> {
+    return this.api
+      .post<TaskData>(`/users/${userId}/tasks`, payload, { auth: true })
       .pipe(
         take(1),
         catchError((error) => {
@@ -47,7 +47,7 @@ export class TasksService {
 
   update(userId: string, payload: UpdateTaskRequest) {
     this.api
-      .put<TaskData>(`users/${userId}/tasks/${payload._id}`, payload, {
+      .put<TaskData>(`/users/${userId}/tasks/${payload._id}`, payload, {
         auth: true,
       })
       .pipe(
@@ -63,9 +63,9 @@ export class TasksService {
       );
   }
 
-  list(userId: string, filters: ListTaskFilters) {
-    this.api
-      .get<TaskData[]>(`users/${userId}/tasks/`, filters, {
+  list(userId: string, filters: ListTaskFilters): Observable<void> {
+    return this.api
+      .get<TaskData[]>(`/users/${userId}/tasks/`, filters, {
         auth: true,
       })
       .pipe(
@@ -79,7 +79,7 @@ export class TasksService {
 
   remove(userId: string, taskId: string) {
     this.api
-      .get<TaskData[]>(`users/${userId}/tasks/${taskId}`, {
+      .get<TaskData[]>(`/users/${userId}/tasks/${taskId}`, {
         auth: true,
       })
       .pipe(

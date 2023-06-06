@@ -22,9 +22,9 @@
       aria-labelledby="priority-radio-group"
       formControlName="priority"
     >
-      <mat-radio-button value="1" name="priority"> Alta </mat-radio-button>
-      <mat-radio-button value="2" name="priority"> Média </mat-radio-button>
-      <mat-radio-button value="3" name="priority"> Baixa </mat-radio-button>
+      <mat-radio-button [value]="1" name="priority"> Alta </mat-radio-button>
+      <mat-radio-button [value]="2" name="priority"> Média </mat-radio-button>
+      <mat-radio-button [value]="3" name="priority"> Baixa </mat-radio-button>
     </mat-radio-group>
     <div class="actions">
       <button mat-button color="warn" type="button" (click)="close()">
