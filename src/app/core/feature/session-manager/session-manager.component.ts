@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SessionManagerService } from './session-manager.service';
 import { AppState } from '../../data-access/store/reducers';
 import { Store } from '@ngrx/store';
-import { take } from 'rxjs';
+import { skipWhile, take } from 'rxjs';
 
 @Component({
   selector: 'app-session-manager',
@@ -10,10 +10,7 @@ import { take } from 'rxjs';
   styleUrls: ['./session-manager.component.scss'],
 })
 export class SessionManagerComponent {
-  constructor(
-    private sessionManagerService: SessionManagerService,
-    private store: Store<AppState>
-  ) {
+  constructor(private sessionManagerService: SessionManagerService) {
     this.figureOutSession();
   }
 

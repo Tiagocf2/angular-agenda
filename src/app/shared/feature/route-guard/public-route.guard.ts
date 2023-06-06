@@ -21,7 +21,7 @@ export class PublicRouteGuard implements CanActivate {
       .select((state) => state.auth.isAuth)
       .pipe(
         map((isAuth) => {
-          const canActivate = isAuth === false;
+          const canActivate = !isAuth;
           if (canActivate) return true;
           this.router.navigate(['/home']);
           return false;

@@ -1,7 +1,15 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from 'src/app/core/data-access/api/api.service';
 import { SignInRequest } from '../interfaces/signin-request.interface';
-import { Observable, map, tap } from 'rxjs';
+import {
+  EMPTY,
+  Observable,
+  catchError,
+  map,
+  take,
+  tap,
+  throwError,
+} from 'rxjs';
 import { SessionService } from 'src/app/core/data-access/session/session.service';
 import { SignInResponse } from '../interfaces/signin-response.interface';
 import SessionType from 'src/app/core/data-access/session/session-type.enum';
@@ -11,6 +19,7 @@ import AuthActions from 'src/app/core/data-access/store/actions/auth.actions';
 import { SignUpRequest } from '../interfaces/signup-request.interface';
 import { SessionData } from 'src/app/core/data-access/session/session-data.interface';
 import { UserData } from 'src/app/shared/interfaces/user-data.interface';
+import UserActions from 'src/app/core/data-access/store/actions/user.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -42,9 +51,14 @@ export class AuthService {
   }
 
   getUserData(session: SessionData): Observable<void> {
-    return this.api.get<UserData>(`/users/${session.id}`).pipe(
-      tap(),
-      map(() => {})
-    );
+    return this.api
+      .get<UserData>(`/users/${session.id}`, undefined, { auth: true })
+      .pipe(
+        take(1),
+        tap((userData) => {
+          this.store.dispatch(UserActions.read(userData));
+        }),
+        map(() => {})
+      );
   }
 }

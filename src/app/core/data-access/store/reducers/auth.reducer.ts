@@ -4,13 +4,13 @@ import actions from '../actions/auth.actions';
 export interface AuthState {
   id: string | null | undefined;
   token: string | null | undefined;
-  isAuth: boolean;
+  isAuth?: boolean;
 }
 
 const initialState: AuthState = {
   id: undefined,
   token: undefined,
-  isAuth: false,
+  isAuth: undefined,
 };
 
 export const AuthReducer = createReducer(
@@ -20,5 +20,11 @@ export const AuthReducer = createReducer(
     isAuth: true,
     id: props.id,
     token: props.access_token,
+  })),
+  on(actions.initialize, (state, props) => ({
+    ...state,
+    isAuth: !!props.auth,
+    id: props.auth?.id,
+    token: props.auth?.access_token,
   }))
 );

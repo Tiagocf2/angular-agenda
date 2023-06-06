@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, inject } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './shared/ui/not-found/not-found.component';
 import { SessionManagerComponent } from './core/feature/session-manager/session-manager.component';
@@ -11,12 +11,7 @@ const routes: Routes = [
   {
     path: '',
     component: SessionManagerComponent,
-    providers: [SessionManagerService],
-    canActivateChild: [SessionManagerGuard],
-    // loadChildren: () =>
-    //   import('./core/feature/session-manager/session-manager.module').then(
-    //     (module) => module.SessionManagerModule
-    //   ),
+    // canActivateChild: [SessionManagerGuard],
     children: [
       {
         path: 'home',
@@ -36,7 +31,7 @@ const routes: Routes = [
       },
     ],
   },
-  { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', redirectTo: '/not-found' },
 ];
