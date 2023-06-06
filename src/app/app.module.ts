@@ -18,10 +18,9 @@ import { PublicRouteGuard } from './shared/feature/route-guard/public-route.guar
 
 import { environment } from 'src/environments/environment';
 import { SessionManagerGuard } from './core/feature/session-manager/session-manager.guard';
-import { WidgetCardComponent } from './home/ui/widget-card/widget-card.component';
 
 @NgModule({
-  declarations: [AppComponent, SessionManagerComponent, PreloaderComponent, WidgetCardComponent],
+  declarations: [AppComponent, SessionManagerComponent, PreloaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
