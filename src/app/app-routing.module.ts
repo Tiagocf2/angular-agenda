@@ -15,7 +15,7 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        canActivate: [PrivateRouteGuard],
+        // canActivate: [PrivateRouteGuard],
         loadChildren: () =>
           import('./home/feature/home-shell/home-shell.module').then(
             (module) => module.HomeShellModule

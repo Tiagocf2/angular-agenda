@@ -1,0 +1,47 @@
+@import "src/app/shared/styles/variables.scss";
+
+:host {
+  height: 100%;
+}
+
+.home-layout {
+  background-color: $background-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  min-height: calc(100% - 50px);
+  padding: 25px;
+}
+
+.main-card {
+  max-width: 100%;
+  width: 100%;
+  flex: 1;
+  background-color: #ccd;
+  padding: 1.5rem;
+}
+
+footer {
+  margin-top: 25px;
+  color: #ccd;
+}
+
+@media (min-width: $screen-md) {
+  .main-card {
+    max-width: $screen-sm;
+  }
+}
+
+@media (min-width: $screen-lg) {
+  .main-card {
+    max-width: $screen-md;
+  }
+}
+
+@media (min-width: $screen-xl) {
+  .main-card {
+    max-width: $screen-lg;
+  }
+}
