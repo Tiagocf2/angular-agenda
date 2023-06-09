@@ -20,10 +20,8 @@ import { ChatService } from '../../data-access/chat.service';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    MatDialogModule,
-    TasksModule,
   ],
-  providers: [AuthService, ChatService],
+  providers: [ChatService],
   exports: [ActionBarComponent],
 })
 export class ActionBarModule {}

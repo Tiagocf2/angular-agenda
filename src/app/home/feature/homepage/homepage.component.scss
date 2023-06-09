@@ -36,9 +36,10 @@
   @media (min-width: $screen-md) {
     grid-template-areas:
       "bar bar profile"
+      "controls controls profile"
       "list list stats";
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr auto 2fr;
   }
 
   grid-template-areas:

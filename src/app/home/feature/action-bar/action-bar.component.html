@@ -1,14 +1,6 @@
 <mat-card class="center-x row card">
   <div class="content-wrapper">
     <div class="content-group">
-      <button
-        mat-fab
-        color="primary"
-        aria-label="Adicionar nova tarefa"
-        (click)="newTask()"
-      >
-        <mat-icon>add</mat-icon>
-      </button>
       <app-chat [onSubmit]="handleSubmit.bind(this)"></app-chat>
     </div>
     <div class="content-group">

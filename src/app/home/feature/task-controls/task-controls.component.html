@@ -1,0 +1,48 @@
+<mat-card class="controls">
+  <div class="wrapper">
+    <div class="line">
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="newTask()"
+        class="add-button"
+      >
+        <mat-icon>add</mat-icon>
+        <span>Nova Tarefa</span>
+      </button>
+    </div>
+    <form [formGroup]="formulario" (ngSubmit)="handleSubmit()" class="form">
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <input
+          matInput
+          formControlName="search"
+          class="search"
+          placeholder="Pesquisar..."
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>Prioridade</mat-label>
+        <mat-select formControlName="priority">
+          <mat-option
+            *ngFor="let item of priorityList | keyvalue"
+            [value]="item.key"
+          >
+            {{ item.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" subscriptSizing="dynamic">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          <mat-option
+            *ngFor="let item of priorityList | keyvalue"
+            [value]="item.key"
+          >
+            {{ item.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-icon-button><mat-icon>search</mat-icon></button>
+    </form>
+  </div>
+</mat-card>

@@ -19,7 +19,7 @@ export enum TaskPriority {
 }
 
 export const TaskPriorityMap = {
-  [TaskPriority.HIGH.toString()]: 'Urgente',
-  [TaskPriority.MEDIUM.toString()]: 'Mediano',
-  [TaskPriority.LOW.toString()]: 'Sem Importancia',
+  [TaskPriority.HIGH.toString()]: 'Alta',
+  [TaskPriority.MEDIUM.toString()]: 'Média',
+  [TaskPriority.LOW.toString()]: 'Baixa',
 };

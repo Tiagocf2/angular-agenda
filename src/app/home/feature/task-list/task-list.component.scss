@@ -1,3 +1,5 @@
+@import "../../styles/home.variables.scss";
+
 :host {
   grid-area: list;
 }
@@ -5,6 +7,10 @@
 mat-card {
   height: fit-content;
   --mdc-elevated-card-container-color: #fff8;
+}
+
+.controls {
+  height: fit-content;
 }
 
 .list {

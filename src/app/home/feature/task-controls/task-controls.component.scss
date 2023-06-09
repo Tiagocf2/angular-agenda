@@ -1,0 +1,25 @@
+@import "../../styles/home.variables.scss";
+
+:host {
+  grid-area: controls;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: $home-spacing;
+}
+
+.line {
+  display: flex;
+  width: 100%;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 3fr 2fr 2fr auto;
+  gap: $home-spacing;
+  align-items: center;
+}

@@ -4,9 +4,6 @@ import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
 import { AuthService } from 'src/app/auth/data-access/auth.service';
 import { AppState } from 'src/app/core/data-access/store/reducers';
-import { UserState } from 'src/app/core/data-access/store/reducers/user.reducer';
-import { MessageType } from 'src/app/messages/enums/message-type.enum';
-import { MessagesService } from 'src/app/messages/messages.service';
 import { UserData } from 'src/app/shared/interfaces/user-data.interface';
 
 @Component({

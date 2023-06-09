@@ -8,6 +8,7 @@ import { ActionBarModule } from '../action-bar/action-bar.module';
 import { ProfileModule } from '../profile/profile.module';
 import { TaskListModule } from '../task-list/task-list.module';
 import { TaskStatsModule } from '../task-stats/task-stats.module';
+import { TaskControlsModule } from '../task-controls/task-controls.module';
 
 @NgModule({
   declarations: [HomePageComponent],
@@ -19,6 +20,7 @@ import { TaskStatsModule } from '../task-stats/task-stats.module';
     ProfileModule,
     TaskListModule,
     TaskStatsModule,
+    TaskControlsModule,
     //
     MatCardModule,
     MatGridListModule,

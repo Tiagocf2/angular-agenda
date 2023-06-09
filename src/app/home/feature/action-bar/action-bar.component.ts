@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { NewTaskDialogComponent } from '../new-task-dialog/new-task-dialog.component';
-import { TasksService } from 'src/app/shared/data-access/tasks/tasks.service';
 import { AppState } from 'src/app/core/data-access/store/reducers';
 import { Store } from '@ngrx/store';
-import { Observable, skipWhile, take } from 'rxjs';
+import { skipWhile, take } from 'rxjs';
 import { ChatService } from '../../data-access/chat.service';
 
 @Component({
@@ -14,21 +11,14 @@ import { ChatService } from '../../data-access/chat.service';
 })
 export class ActionBarComponent {
   constructor(
-    private dialog: MatDialog,
-    private tasksService: TasksService,
-    private store: Store<AppState>,
-    private chatService: ChatService
+    private chatService: ChatService,
+    private store: Store<AppState>
   ) {}
 
-  userId$!: Observable<string | undefined>;
+  name?: string;
+  chatResponse?: { text: string };
 
   ngOnInit() {
-    this.userId$ = this.store
-      .select((state) => state.user.id)
-      .pipe(
-        skipWhile((id) => id == null),
-        take(1)
-      );
     this.store
       .select((state) => state.user.name)
       .pipe(
@@ -36,20 +26,6 @@ export class ActionBarComponent {
         take(1)
       )
       .subscribe((v) => (this.name = v));
-  }
-
-  name?: string;
-  chatResponse?: { text: string };
-
-  newTask() {
-    const dialogRef = this.dialog.open(NewTaskDialogComponent, {});
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (!result) return;
-      this.userId$.subscribe((uid) => {
-        this.tasksService.create(uid!, result).subscribe();
-      });
-    });
   }
 
   handleSubmit(text: string) {
