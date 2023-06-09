@@ -17,7 +17,6 @@ import { PrivateRouteGuard } from './shared/feature/route-guard/private-route.gu
 import { PublicRouteGuard } from './shared/feature/route-guard/public-route.guard';
 
 import { environment } from 'src/environments/environment';
-import { SessionManagerGuard } from './core/feature/session-manager/session-manager.guard';
 
 @NgModule({
   declarations: [AppComponent, SessionManagerComponent, PreloaderComponent],
@@ -34,7 +33,7 @@ import { SessionManagerGuard } from './core/feature/session-manager/session-mana
     MessagesModule.forRoot(),
     MatProgressBarModule,
   ],
-  providers: [PrivateRouteGuard, PublicRouteGuard, SessionManagerGuard],
+  providers: [PrivateRouteGuard, PublicRouteGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

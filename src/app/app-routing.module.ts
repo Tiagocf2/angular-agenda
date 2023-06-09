@@ -4,7 +4,6 @@ import { NotFoundComponent } from './shared/ui/not-found/not-found.component';
 import { SessionManagerComponent } from './core/feature/session-manager/session-manager.component';
 import { PublicRouteGuard } from './shared/feature/route-guard/public-route.guard';
 import { PrivateRouteGuard } from './shared/feature/route-guard/private-route.guard';
-import { SessionResolver } from './core/feature/session-manager/session-manager.resolver';
 
 const routes: Routes = [
   {
