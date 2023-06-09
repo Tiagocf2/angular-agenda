@@ -2,15 +2,8 @@
 @import "../../styles/home.variables.scss";
 
 :host {
-  height: 100%;
-}
-
-.allow-overflow {
-  overflow-y: auto;
-}
-
-mat-grid-tile {
-  width: 100%;
+  // display: grid;
+  // height: 100%;
 }
 
 .home-layout {
@@ -36,6 +29,19 @@ mat-grid-tile {
   flex: 1;
   background-color: $light-color;
   padding: 1.5rem;
+  overflow-y: auto;
+  display: grid;
+  grid-template-areas:
+    "bar bar profile"
+    "list list stats";
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.main-card__content {
+  max-height: 100%;
+  overflow: hidden auto;
 }
 
 footer {

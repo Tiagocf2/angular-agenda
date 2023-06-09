@@ -1,3 +1,7 @@
+:host {
+  grid-area: list;
+}
+
 mat-card {
   height: fit-content;
   --mdc-elevated-card-container-color: #fff8;

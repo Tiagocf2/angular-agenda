@@ -37,10 +37,9 @@ export class SessionManagerGuard implements CanActivateChild {
           return isAuth == null;
         }),
         // delay(4000),
-        map(() => true),
-        tap(console.log)
+        map(() => true)
       );
-    obs.subscribe((v) => console.log('v', v));
+    obs.subscribe();
     return obs;
   }
 }

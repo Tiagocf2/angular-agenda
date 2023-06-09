@@ -1,3 +1,7 @@
+:host {
+  grid-area: profile;
+}
+
 .perfil-wrapper {
   display: flex;
   flex-direction: column;
@@ -16,4 +20,9 @@
   .username {
     font-weight: bold;
   }
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
 }
