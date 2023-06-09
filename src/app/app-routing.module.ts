@@ -4,8 +4,7 @@ import { NotFoundComponent } from './shared/ui/not-found/not-found.component';
 import { SessionManagerComponent } from './core/feature/session-manager/session-manager.component';
 import { PublicRouteGuard } from './shared/feature/route-guard/public-route.guard';
 import { PrivateRouteGuard } from './shared/feature/route-guard/private-route.guard';
-import { SessionManagerService } from './core/feature/session-manager/session-manager.service';
-import { SessionManagerGuard } from './core/feature/session-manager/session-manager.guard';
+import { SessionResolver } from './core/feature/session-manager/session-manager.resolver';
 
 const routes: Routes = [
   {
@@ -15,7 +14,7 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        // canActivate: [PrivateRouteGuard],
+        canActivate: [PrivateRouteGuard],
         loadChildren: () =>
           import('./home/feature/home-shell/home-shell.module').then(
             (module) => module.HomeShellModule

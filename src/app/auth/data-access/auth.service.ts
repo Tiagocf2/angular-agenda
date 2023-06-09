@@ -41,7 +41,7 @@ export class AuthService {
           keepSession === true ? SessionType.LOCAL : SessionType.SESSION;
         this.sessionService.create(response, sessionType);
         this.store.dispatch(AuthActions.signIn(response));
-        this.getUserData(<SessionData>response).subscribe(console.log);
+        this.getUserData(<SessionData>response).subscribe();
       }),
       map(() => true)
     );

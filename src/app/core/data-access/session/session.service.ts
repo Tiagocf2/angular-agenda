@@ -13,6 +13,7 @@ export class SessionService {
   }
 
   create(payload: SessionData, type: SessionType) {
+    this.destroy();
     this.sessionType = type;
     this.storage.setItem(SESSION_KEY, JSON.stringify(payload));
   }
