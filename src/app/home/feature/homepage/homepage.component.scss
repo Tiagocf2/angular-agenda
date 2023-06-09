@@ -31,12 +31,23 @@
   padding: 1.5rem;
   overflow-y: auto;
   display: grid;
-  grid-template-areas:
-    "bar bar profile"
-    "list list stats";
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
   gap: 1rem;
+
+  @media (min-width: $screen-md) {
+    grid-template-areas:
+      "bar bar profile"
+      "list list stats";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+
+  grid-template-areas:
+    "profile"
+    "bar"
+    "stats"
+    "list";
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 
 .main-card__content {
