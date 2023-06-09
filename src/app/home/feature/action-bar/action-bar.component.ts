@@ -17,6 +17,7 @@ export class ActionBarComponent {
 
   name?: string;
   chatResponse?: { text: string };
+  isLoading = false;
 
   ngOnInit() {
     this.store
@@ -29,9 +30,13 @@ export class ActionBarComponent {
   }
 
   handleSubmit(text: string) {
+    this.isLoading = true;
     this.chatService
       .sendMessage(text, this.name || '')
       .pipe(take(1))
-      .subscribe((v) => (this.chatResponse = v));
+      .subscribe((result) => {
+        this.isLoading = false;
+        this.chatResponse = result;
+      });
   }
 }

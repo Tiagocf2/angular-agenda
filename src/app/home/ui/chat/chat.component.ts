@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ChatComponent {
   @Input() onSubmit?: (text: string) => void;
+  @Input() disabled: boolean = false;
   static MAX_CHARS = 150;
   chars = 0;
 

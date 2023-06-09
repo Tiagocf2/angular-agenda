@@ -14,7 +14,13 @@
       >/<span>{{ maxlength }}</span>
     </div>
   </div>
-  <button mat-icon-button (click)="handleSubmit(ref)">
-    <mat-icon color="primary">send</mat-icon>
+  <button
+    mat-icon-button
+    (click)="handleSubmit(ref)"
+    [disabled]="disabled || chars <= 0"
+  >
+    <mat-icon [color]="disabled || chars <= 0 ? undefined : 'primary'"
+      >send</mat-icon
+    >
   </button>
 </div>

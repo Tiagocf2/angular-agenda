@@ -1,7 +1,10 @@
 <mat-card class="center-x row card">
   <div class="content-wrapper">
     <div class="content-group">
-      <app-chat [onSubmit]="handleSubmit.bind(this)"></app-chat>
+      <app-chat
+        [onSubmit]="handleSubmit.bind(this)"
+        [disabled]="isLoading"
+      ></app-chat>
     </div>
     <div class="content-group">
       <div class="response">
