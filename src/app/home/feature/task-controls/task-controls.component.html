@@ -23,6 +23,7 @@
       <mat-form-field appearance="outline" subscriptSizing="dynamic">
         <mat-label>Prioridade</mat-label>
         <mat-select formControlName="priority">
+          <mat-option [value]="null"> Todos </mat-option>
           <mat-option
             *ngFor="let item of priorityList | keyvalue"
             [value]="item.key"
@@ -34,8 +35,9 @@
       <mat-form-field appearance="outline" subscriptSizing="dynamic">
         <mat-label>Status</mat-label>
         <mat-select formControlName="status">
+          <mat-option [value]="null"> Todos </mat-option>
           <mat-option
-            *ngFor="let item of priorityList | keyvalue"
+            *ngFor="let item of statusList | keyvalue"
             [value]="item.key"
           >
             {{ item.value }}

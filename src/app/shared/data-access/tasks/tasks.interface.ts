@@ -28,7 +28,8 @@ export interface UpdateTaskRequest {
 }
 
 export interface ListTaskFilters {
-  tags?: Set<string>;
+  search?: string;
+  status?: string;
   priority?: number;
 }
 

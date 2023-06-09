@@ -51,7 +51,6 @@ export class TasksService {
   }
 
   update(userId: string, payload: UpdateTaskRequest): Observable<void> {
-    console.log(payload);
     return this.api
       .put<TaskData>(`/users/${userId}/tasks/${payload._id}`, payload, {
         auth: true,

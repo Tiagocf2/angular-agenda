@@ -6,7 +6,10 @@ import { AppState } from 'src/app/core/data-access/store/reducers';
 import { TasksService } from 'src/app/shared/data-access/tasks/tasks.service';
 import { NewTaskDialogComponent } from '../new-task-dialog/new-task-dialog.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TaskPriorityMap } from 'src/app/shared/data-access/tasks/task.enum';
+import {
+  TaskPriorityMap,
+  TaskStatusMap,
+} from 'src/app/shared/data-access/tasks/task.enum';
 
 @Component({
   selector: 'app-task-controls',
@@ -25,6 +28,7 @@ export class TaskControlsComponent {
   ) {}
 
   priorityList = TaskPriorityMap;
+  statusList = TaskStatusMap;
   formulario!: FormGroup;
   userId$!: Observable<string | undefined>;
 
@@ -56,5 +60,12 @@ export class TaskControlsComponent {
   handleSubmit() {
     if (!this.formulario.valid) return;
     const values = structuredClone(this.formulario.value);
+    Object.entries(values).forEach(([key, value]) => {
+      if (value == null) delete values[key];
+    });
+
+    this.userId$.subscribe((uid) => {
+      this.tasksService.list(uid!, values).subscribe();
+    });
   }
 }

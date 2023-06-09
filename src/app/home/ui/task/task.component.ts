@@ -62,6 +62,9 @@ export class TaskComponent {
       case TaskStatus.LATE:
         color = 'danger';
         break;
+      case TaskStatus.INACTIVE:
+        color = 'dark';
+        break;
     }
     return 'badge ' + 'badge--' + color;
   }
