@@ -6,6 +6,7 @@ import {
   CreateTaskRequest,
   ListTaskFilters,
   TaskData,
+  TaskStatsResponse,
   UpdateTaskRequest,
 } from './tasks.interface';
 import { EMPTY, Observable, catchError, map, take, tap } from 'rxjs';
@@ -77,6 +78,24 @@ export class TasksService {
         take(1),
         tap((result) => {
           this.store.dispatch(TasksActions.list({ docs: result }));
+        }),
+        map(() => {})
+      );
+  }
+
+  getStats(userId: string): Observable<void> {
+    return this.api
+      .get<TaskStatsResponse>(
+        `/users/${userId}/tasks/stats`,
+        {},
+        {
+          auth: true,
+        }
+      )
+      .pipe(
+        take(1),
+        tap((result) => {
+          this.store.dispatch(TasksActions.stats(result));
         }),
         map(() => {})
       );

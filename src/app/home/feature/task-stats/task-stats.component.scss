@@ -1,0 +1,69 @@
+@import "../../styles/home.variables.scss";
+
+:host {
+  grid-area: stats;
+}
+
+$font-color: scale-color(
+  $color: $light-color,
+  $saturation: 15%,
+  $lightness: -15%,
+);
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: $home-spacing;
+  container-type: size;
+}
+
+mat-card {
+  position: relative;
+  display: flex;
+  flex: 1;
+  padding: $home-spacing;
+
+  @container (max-width: 200px) {
+    .card-title {
+      font-size: 16px;
+    }
+    .card-icon {
+      position: relative;
+      top: 0;
+      right: 0;
+      translate: 0 0;
+    }
+    .card-value {
+      flex: 1;
+    }
+  }
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $font-color;
+  margin-bottom: $home-spacing;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+}
+
+.card-value {
+  font-size: 50px;
+  line-height: 1em;
+}
+
+.card-icon {
+  position: absolute;
+  top: 0.75rem;
+  right: $home-spacing;
+  line-height: 1em;
+  width: fit-content;
+  font-size: 50px;
+  color: $font-color;
+}

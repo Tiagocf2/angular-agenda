@@ -4,21 +4,24 @@ import { TaskData } from 'src/app/shared/data-access/tasks/tasks.interface';
 
 export interface TasksState {
   list: TaskData[];
+  stats: object;
 }
 
 const initialState: TasksState = {
   list: [],
+  stats: {},
 };
 
 export const TasksReducer = createReducer(
   initialState,
-  on(actions.list, (_, props) => ({
+  on(actions.list, (state, props) => ({
+    ...state,
     list: props.docs,
   })),
   on(actions.create, (state, props) => {
     const list = Array.from(state.list);
     list.push(props);
-    return { list };
+    return { ...state, list };
   }),
   on(actions.update, (state, props) => {
     const list = Array.from(state.list);
@@ -28,7 +31,7 @@ export const TasksReducer = createReducer(
         break;
       }
     }
-    return { list };
+    return { ...state, list };
   }),
   on(actions.remove, (state, props) => {
     const list = Array.from(state.list);
@@ -39,6 +42,10 @@ export const TasksReducer = createReducer(
       }
     }
 
-    return { list };
-  })
+    return { ...state, list };
+  }),
+  on(actions.stats, (state, props) => ({
+    ...state,
+    stats: props,
+  }))
 );

@@ -31,3 +31,8 @@ export interface ListTaskFilters {
   tags?: Set<string>;
   priority?: number;
 }
+
+export interface TaskStatsResponse {
+  done: number;
+  total: number;
+}
